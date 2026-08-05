@@ -1,0 +1,87 @@
+{
+  "schema": [
+    "unknown frontmatter key \"slug\"",
+    "unknown frontmatter key \"displayName\"",
+    "unknown frontmatter key \"summary\"",
+    "unknown frontmatter key \"edition\"",
+    "unknown frontmatter key \"tags\""
+  ],
+  "name": [
+    "name \"feishu-openapi\" does not match its directory \"feishu-clouddoc-api\"",
+    "name \"tms-takecar\" does not match its directory \"tencen-ride-skill\"",
+    "name \"auto-reply\" does not match its directory \"doorstep-auto-reply\"",
+    "name \"agentarcade\" does not match its directory \"quincy-agentarcade\"",
+    "name \"ClawTrace Self-Evolve\" must be lowercase letters, digits, and hyphens only"
+  ],
+  "path": [
+    "reference `references/env.example` does not exist",
+    "reference `scripts/keywords_config.json` does not exist",
+    "reference `assets/reply_config_template.json` does not exist",
+    "reference `zh-CN.json` does not exist",
+    "reference `auth-state.json` does not exist"
+  ],
+  "frontmatter": [
+    "missing YAML frontmatter (--- … ---)",
+    "frontmatter is missing name"
+  ],
+  "description": [
+    "frontmatter is missing description (the trigger the agent matches on)",
+    "description exceeds 1024 characters (1204)",
+    "description exceeds 1024 characters (1244)",
+    "description exceeds 1024 characters (1893)",
+    "description exceeds 1024 characters (1048)"
+  ],
+  "metadata": [
+    "metadata.openclaw is empty",
+    "metadata.requires is empty",
+    "metadata.clawdbot is empty",
+    "metadata.primaryEnv is empty",
+    "metadata.envHelp is empty"
+  ],
+  "undeclared-cli": [
+    "calls `codex` but never declares or installs it — it may not be present elsewhere",
+    "calls `claude` but never declares or installs it — it may not be present elsewhere",
+    "calls `gemini` but never declares or installs it — it may not be present elsewhere",
+    "calls `llm` but never declares or installs it — it may not be present elsewhere",
+    "calls `ollama` but never declares or installs it — it may not be present elsewhere"
+  ],
+  "provider-env": [
+    "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case",
+    "assumes `ANTHROPIC_API_KEY` is set — document it in .env.example and handle the unset case",
+    "assumes `GEMINI_API_KEY` is set — document it in .env.example and handle the unset case",
+    "assumes `OPENROUTER_API_KEY` is set — document it in .env.example and handle the unset case",
+    "assumes `AZURE_OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+  ],
+  "allowed-tools": [
+    "allowed-tools entry \"[Bash(oo *)]\" is malformed",
+    "allowed-tools entry \"[]\" is malformed",
+    "allowed-tools entry \"[\"Bash(npx @openant-ai/cli@latest status*)\"\" is malformed",
+    "allowed-tools entry \"\"Bash(npx @openant-ai/cli@latest tasks accept *)\"\" is malformed",
+    "allowed-tools entry \"\"Bash(npx @openant-ai/cli@latest tasks apply *)\"\" is malformed"
+  ],
+  "link": [
+    "link target `../review-verification-protocol/SKILL.md` does not exist",
+    "link target `../swift-code-review/SKILL.md` does not exist",
+    "link target `../swiftui-code-review/SKILL.md` does not exist",
+    "link target `../swiftdata-code-review/SKILL.md` does not exist",
+    "link target `../swift-testing-code-review/SKILL.md` does not exist"
+  ],
+  "abs-path": [
+    "machine-specific absolute path `D:\\<redacted>` — will not resolve on anyone else's machine (use a relative path or {baseDir})",
+    "author-specific absolute path `/Users/<redacted>/projects/demos/g1/game2` — `Users/<redacted>` does not exist elsewhere (use a relative path or {baseDir})",
+    "author-specific absolute path `/Users/<redacted>/projects/demos/g2/game2` — `Users/<redacted>` does not exist elsewhere (use a relative path or {baseDir})",
+    "author-specific absolute path `/Users/<redacted>/projects/demos/g1/game2/` — `Users/<redacted>` does not exist elsewhere (use a relative path or {baseDir})",
+    "author-specific absolute path `/Users/<redacted>/projects/demos/g2/game2/` — `Users/<redacted>` does not exist elsewhere (use a relative path or {baseDir})"
+  ],
+  "placeholder": [
+    "unresolved placeholder `<INSERT_TARGET_NAME>` left in a shipped file",
+    "unresolved placeholder `<INSERT ROLE MANIFEST FROM BELOW>` left in a shipped file"
+  ],
+  "todo": [
+    "TODO/FIXME marker left in a shipped file"
+  ],
+  "duplicate-key": [
+    "duplicate frontmatter key \"tools\"",
+    "duplicate frontmatter key \"tags\""
+  ]
+}

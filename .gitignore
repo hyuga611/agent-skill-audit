@@ -1,0 +1,8 @@
+node_modules/
+ch-index*.json
+ch-corpus.jsonl
+oc-corpus.json
+oc-repotree.json
+oc-tree/
+ch-tree/
+*.log

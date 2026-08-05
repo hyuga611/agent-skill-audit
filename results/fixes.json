@@ -1,0 +1,63 @@
+{
+  "note": "Six precision bugs found by running the linters against real corpora rather than fixtures. Each was fixed before any number in this repository was published, and each is pinned by a regression test in the named package. Together they take the openclaw corpus from 219 findings to 59 with every real defect retained.",
+  "fixes": [
+    {
+      "n": 1,
+      "package": "tenken",
+      "version": "0.2.0",
+      "title": "skills-lint resolved references skill-locally while reflint resolved them repository-wide",
+      "detail": "tenken promised that a reference reflint resolves would not be reported missing, and built reflint's exists predicate exactly — then handed skills-lint a different one that looked only inside the skill's own folder. A skill checked into a repository had every reference to packages/, docs/ or qa/ reported broken.",
+      "measured": "139 of 197 reported references on the openclaw corpus existed elsewhere in the repository",
+      "test": "test/check.test.mjs"
+    },
+    {
+      "n": 2,
+      "package": "skills-lint",
+      "version": "0.7.0",
+      "title": "a dotted numeric tail was read as a file extension",
+      "detail": "isSkillPath treated anything ending in .<1-8 alphanumerics> as having an extension, so openai/gpt-5.4, zai/glm-5.1 and moonshot/kimi-k2.5 were checked as file paths. The code comment above it claimed to guard against exactly this using anthropic/claude-3.5-sonnet as the example, and that example happens to end in a letter, so the guard was never exercised by a version number.",
+      "measured": "6 findings on the openclaw corpus, all model identifiers",
+      "test": "test/realworld.test.mjs"
+    },
+    {
+      "n": 3,
+      "package": "skills-lint",
+      "version": "0.7.0",
+      "title": "artifacts were excused only on the line that says they are created",
+      "detail": "A skill writes a file in one step and reads it back in a later one. The produces heuristic ran line by line, so the first mention was excused and every later mention was reported as a missing reference.",
+      "measured": "16 of 80 surviving findings on the openclaw corpus — the largest single class",
+      "test": "test/realworld.test.mjs"
+    },
+    {
+      "n": 4,
+      "package": "carrylint",
+      "version": "0.2.2",
+      "title": "an uppercase user template was read as an author path",
+      "detail": "/home/YOUR_USER/, /Users/USERNAME/ and /Users/MY_NAME/ are the same replace-this documentation convention already accepted for YOUR_API_KEY and /path/to/. The fix is deliberately narrow: a bare uppercase segment is not enough, because /Users/CS/ is a real author's initials and was confirmed genuine in an earlier audit.",
+      "measured": "found while scanning the ClawHub sample",
+      "test": "test/realworld.test.mjs"
+    },
+    {
+      "n": 5,
+      "package": "skills-lint",
+      "version": "0.7.0",
+      "title": "indented frontmatter lost every key",
+      "detail": "A SKILL.md whose YAML block was indented parsed to an empty object, so the skill was reported as missing both name and description while both were present.",
+      "measured": "found while scanning the ClawHub sample",
+      "test": "test/realworld.test.mjs"
+    },
+    {
+      "n": 6,
+      "package": "skills-lint",
+      "version": "0.7.1",
+      "title": "fenced code blocks were scanned for references",
+      "detail": "A skill that prints its own sample output, or shows a cp src/a.ts dist/ snippet, was reported as pointing at files that do not exist. reflint had already made this call in its own scanner and puts fenced content behind --code-blocks. Found by dogfooding: a skill written to document these linters could not pass them.",
+      "measured": "10.8% of path and link findings across the 2,465-skill ClawHub sample",
+      "test": "test/realworld.test.mjs"
+    }
+  ],
+  "alsoChanged": [
+    "skills-lint 0.7.0 downgraded an unrecognised frontmatter key from error to warning. The Agent Skills standard requires runtimes to ignore keys they do not know, so an unknown key is not by itself a defect. A near-miss of a known key stays an error, because a typo means the real key is absent.",
+    "tenken 0.2.0 stopped overwriting a severity set by an engine. skills-lint findings were pushed as error unconditionally, so a finding deliberately marked warn still failed the build."
+  ]
+}

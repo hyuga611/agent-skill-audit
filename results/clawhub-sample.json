@@ -1,0 +1,102 @@
+{
+  "corpus": "clawhub.ai public skill registry",
+  "method": {
+    "population": 69265,
+    "populationNote": "Enumerated via GET /api/v1/skills with cursor paging, ordered by_active_updated (most recently updated first). Enumeration was stopped at 69,265; the registry was still returning new pages, so this is the most-recently-updated slice of the registry, not the whole of it.",
+    "sample": 2465,
+    "sampling": "uniform random without replacement, mulberry32 PRNG, seed 20260804, applied after a stable sort by slug so the draw is reproducible",
+    "date": "2026-08-04",
+    "tools": {
+      "tenken": "0.2.0",
+      "skills-lint": "0.7.1",
+      "carrylint": "0.2.2",
+      "reflint": "0.8.3"
+    },
+    "resolution": "Each skill was materialized as a standalone package (file manifest from the registry, real SKILL.md body) and scanned in its own root, because a published package is the unit of distribution."
+  },
+  "totals": {
+    "scanned": 2465,
+    "findings": 5527,
+    "skillsWithAnyFinding": 1785,
+    "skillsWithAtLeastOneError": 1424,
+    "pctWithAtLeastOneError": 57.8
+  },
+  "byKind": {
+    "skills-lint:schema": {
+      "skills": 762,
+      "pctOfSample": 30.9,
+      "findings": 1910
+    },
+    "skills-lint:name": {
+      "skills": 720,
+      "pctOfSample": 29.2,
+      "findings": 939
+    },
+    "skills-lint:path": {
+      "skills": 445,
+      "pctOfSample": 18.1,
+      "findings": 1438
+    },
+    "skills-lint:frontmatter": {
+      "skills": 192,
+      "pctOfSample": 7.8,
+      "findings": 192
+    },
+    "skills-lint:metadata": {
+      "skills": 129,
+      "pctOfSample": 5.2,
+      "findings": 210
+    },
+    "carrylint:abs-path": {
+      "skills": 94,
+      "pctOfSample": 3.8,
+      "findings": 242
+    },
+    "skills-lint:allowed-tools": {
+      "skills": 58,
+      "pctOfSample": 2.4,
+      "findings": 80
+    },
+    "carrylint:provider-env": {
+      "skills": 52,
+      "pctOfSample": 2.1,
+      "findings": 118
+    },
+    "skills-lint:link": {
+      "skills": 51,
+      "pctOfSample": 2.1,
+      "findings": 272
+    },
+    "carrylint:undeclared-cli": {
+      "skills": 31,
+      "pctOfSample": 1.3,
+      "findings": 71
+    },
+    "skills-lint:description": {
+      "skills": 30,
+      "pctOfSample": 1.2,
+      "findings": 30
+    },
+    "carrylint:todo": {
+      "skills": 9,
+      "pctOfSample": 0.4,
+      "findings": 17
+    },
+    "skills-lint:duplicate-key": {
+      "skills": 3,
+      "pctOfSample": 0.1,
+      "findings": 6
+    },
+    "carrylint:placeholder": {
+      "skills": 2,
+      "pctOfSample": 0.1,
+      "findings": 2
+    }
+  },
+  "caveats": [
+    "These are linter findings, not adjudicated defects. Only the openclaw corpus was verified case by case.",
+    "skills-lint:schema (unknown frontmatter key) is a warning, not an error: the Agent Skills standard requires runtimes to ignore keys they do not recognise. It is reported here because it is a large share of the raw output, not because those skills are broken.",
+    "skills-lint:name counts a frontmatter name that differs from the registry slug. On ClawHub the slug is the routable identity, so a mismatch means the skill installs under a name the registry does not show. ClawHub documents that it keeps slug and stored name separate, so a share of these are deliberate.",
+    "The corpus itself (2,465 third-party SKILL.md bodies) is deliberately not republished here. Re-fetch it with the harness."
+  ]
+}

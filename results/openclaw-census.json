@@ -1,0 +1,505 @@
+{
+  "corpus": "openclaw/openclaw bundled first-party skills (.agents/skills/**)",
+  "method": {
+    "skills": 46,
+    "commit": "3ac70832135ba711612b9946c7bd118af115b682",
+    "date": "2026-08-04",
+    "resolution": "Resolved against the whole repository tree (30,814 blobs), not the skill folder: a skill that lives inside a repo may legitimately reference anything in it. Resolving skill-locally reported 139 of 197 references as missing that were present."
+  },
+  "precision": {
+    "findingsBeforeFixes": 219,
+    "findingsAfterFixes": 59,
+    "removed": 160,
+    "note": "All six fixes are listed in fixes.json. Every reported defect below survives both numbers."
+  },
+  "totals": {
+    "findings": 59,
+    "skillsWithFindings": 17
+  },
+  "reportedUpstream": {
+    "issue": "https://github.com/openclaw/openclaw/issues/119393",
+    "pr": "https://github.com/openclaw/openclaw/pull/119394",
+    "maintainerReview": "ClawSweeper confirmed reproducibility against current main and the latest release, rated the issue \"diamond lobster\", and marked it the canonical report for stale bundled-skill references.",
+    "defects": [
+      "openclaw-refactor-docs instructs the agent to read ../openclaw-docs/SKILL.md first; that skill was deleted in 0dabb70 and replaced by technical-documentation. Three references were never updated.",
+      "openclaw-test-heap-leaks points at test/fixtures/test-timings.unit.json, test/fixtures/test-parallel.behavior.json and scripts/test-update-memory-hotspots.mjs. None exist, and those names appear nowhere else in the tree, so no replacement was proposed."
+    ],
+    "deliberatelyNotReported": [
+      "openclaw-live-updater hardcodes /Users/steipete/openclaw. carrylint flags it and it is not a defect: the skill is an explicit single-machine runbook for the canonical live mirror. Reporting it would have been noise."
+    ]
+  },
+  "findings": [
+    {
+      "file": ".agents/skills/openclaw-autonomous-issue-sweep/SKILL.md",
+      "line": 166,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `../codex` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-parallels-smoke/SKILL.md",
+      "line": 108,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `__openclaw/control-ui-config.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-parallels-smoke/SKILL.md",
+      "line": 137,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `../../../../openclaw-windows-node/.agents/skills/openclaw-proof-validation/PARALLELS.md` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-refactor-docs/SKILL.md",
+      "line": 52,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `../openclaw-docs/SKILL.md` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-heap-leaks/SKILL.md",
+      "line": 30,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `test/fixtures/test-timings.unit.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-heap-leaks/SKILL.md",
+      "line": 30,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `scripts/test-update-memory-hotspots.mjs` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-heap-leaks/SKILL.md",
+      "line": 31,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `test/fixtures/test-parallel.behavior.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-heap-leaks/SKILL.md",
+      "line": 33,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `test/fixtures/test-timings.unit.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-heap-leaks/SKILL.md",
+      "line": 46,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `scripts/test-parallel.mjs` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-heap-leaks/SKILL.md",
+      "line": 46,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `scripts/test-parallel-memory.mjs` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-performance/SKILL.md",
+      "line": 15,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `test/helpers/channels/AGENTS.md` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-test-performance/SKILL.md",
+      "line": 169,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `test/fixtures/test-timings.unit.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 217,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `package/package.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 368,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `release-evidence.md` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 369,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `release-evidence.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 370,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `index.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 719,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `failures.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 743,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `summary.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 743,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `failures.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 777,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `.artifacts/docker-tests/lane-timings.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 806,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `failures.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/openclaw-testing/SKILL.md",
+      "line": 806,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `summary.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/parallels-discord-roundtrip/SKILL.md",
+      "line": 52,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `discord-last-readback.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 388,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `OpenClawCompanion-SHA256SUMS.txt` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 734,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `.github/workflows/qa-live-telegram-convex.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 833,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-npm-dist-tags.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 898,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-macos-validate.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 902,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-macos-publish.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 928,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-macos-publish.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 1047,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-macos-validate.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 1050,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-macos-publish.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 1108,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-npm-dist-tags.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 1116,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `openclaw/releases/.github/workflows/openclaw-macos-publish.yml` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-plugin-testing/SKILL.md",
+      "line": 155,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `npm-pack.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-plugin-testing/SKILL.md",
+      "line": 155,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `preflight-manifest.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-plugin-testing/SKILL.md",
+      "line": 157,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `plugin-npm-package-evidence.json` does not exist"
+    },
+    {
+      "file": ".agents/skills/tag-duplicate-prs-issues/SKILL.md",
+      "line": 17,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `skills/prtags/SKILL.md` does not exist"
+    },
+    {
+      "file": ".agents/skills/technical-documentation/SKILL.md",
+      "line": 16,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `AGENT.md` does not exist"
+    },
+    {
+      "file": ".agents/skills/telegram-crabbox-e2e-proof/SKILL.md",
+      "line": 183,
+      "engine": "skills-lint",
+      "kind": "path",
+      "severity": "error",
+      "message": "reference `telegram-user-crabbox-session-motion.gif` does not exist"
+    },
+    {
+      "file": ".agents/skills/auto-qa/SKILL.md",
+      "line": 42,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 48,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 106,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `claude` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 135,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `claude` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 308,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 309,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `claude` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 323,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 326,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/autoreview/SKILL.md",
+      "line": 332,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `claude` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/openclaw-autonomous-issue-sweep/SKILL.md",
+      "line": 280,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/openclaw-autonomous-issue-sweep/SKILL.md",
+      "line": 284,
+      "engine": "carrylint",
+      "kind": "undeclared-cli",
+      "severity": "warn",
+      "message": "calls `codex` but never declares or installs it — it may not be present elsewhere"
+    },
+    {
+      "file": ".agents/skills/openclaw-live-updater/SKILL.md",
+      "line": 8,
+      "engine": "carrylint",
+      "kind": "abs-path",
+      "severity": "error",
+      "message": "author-specific absolute path `/Users/steipete/openclaw` — `Users/steipete` does not exist elsewhere (use a relative path or {baseDir})"
+    },
+    {
+      "file": ".agents/skills/openclaw-live-updater/SKILL.md",
+      "line": 42,
+      "engine": "carrylint",
+      "kind": "abs-path",
+      "severity": "error",
+      "message": "author-specific absolute path `/Users/steipete/openclaw/dist/OpenClaw.app/Contents/MacOS/OpenClaw` — `Users/steipete` does not exist elsewhere (use a relative path or {baseDir})"
+    },
+    {
+      "file": ".agents/skills/openclaw-parallels-smoke/SKILL.md",
+      "line": 79,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    },
+    {
+      "file": ".agents/skills/openclaw-parallels-smoke/SKILL.md",
+      "line": 116,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    },
+    {
+      "file": ".agents/skills/openclaw-parallels-smoke/SKILL.md",
+      "line": 163,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    },
+    {
+      "file": ".agents/skills/openclaw-qa-testing/SKILL.md",
+      "line": 38,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    },
+    {
+      "file": ".agents/skills/parallels-discord-roundtrip/SKILL.md",
+      "line": 26,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    },
+    {
+      "file": ".agents/skills/release-openclaw-maintainer/SKILL.md",
+      "line": 735,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    },
+    {
+      "file": ".agents/skills/verify-release/SKILL.md",
+      "line": 121,
+      "engine": "carrylint",
+      "kind": "provider-env",
+      "severity": "warn",
+      "message": "assumes `OPENAI_API_KEY` is set — document it in .env.example and handle the unset case"
+    }
+  ]
+}
