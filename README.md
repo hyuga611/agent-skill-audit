@@ -135,6 +135,32 @@ distribution. The openclaw skills were resolved against the entire 30,814-blob r
 instead, because a skill living in a repository may legitimately reference anything in it. Using
 the wrong one of those two rules is fix 1 above.
 
+### The resolution rule is a choice, and it makes these numbers a floor
+
+Neither rule is what the runtime does. OpenClaw tells the model, in the same prompt that lists the
+available skills:
+
+> When a skill file references a relative path, resolve it against the skill directory (parent of
+> `SKILL.md` / dirname of the path) and use that absolute path in tool commands.
+> — [`src/skills/loading/skill-contract.ts`](https://github.com/openclaw/openclaw/blob/main/src/skills/loading/skill-contract.ts)
+
+Strictly applied, that would resolve `scripts/build.mjs` inside a repo-hosted skill to
+`.agents/skills/<skill>/scripts/build.mjs` — which is not what an author writing about the
+repository's own `scripts/` means. In practice the model has both the instruction and the context to
+tell those apart, so the true behaviour sits between "skill folder only" and "anywhere in the repo".
+
+This audit picked the permissive end. **That direction trades false positives for false negatives, so
+the openclaw census is a floor, not a ceiling.** The size of the disagreement is measurable: 139
+references resolve somewhere in the repository but not under their own skill folder. Some of those
+are repo-root references a model would read correctly; some would fail. Splitting them needs a
+judgement per reference, which is exactly the thing this harness cannot do.
+
+Worth stating plainly because it cost something: an upstream report built on the strict reading
+([#119534](https://github.com/openclaw/openclaw/issues/119534)) was closed `not planned`, correctly —
+the contract above is the answer and I had reasoned from the raw read tool instead. A linter that
+picks a resolution rule is picking a definition of "broken", and that definition has to match the
+runtime, not the filesystem.
+
 ## Files
 
 | | |
