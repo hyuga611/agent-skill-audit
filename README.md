@@ -42,8 +42,9 @@ a third of published skills, the name the agent registers is not the name the re
 
 All 46 first-party skills bundled in a repository with 385,000 stars, at commit `3ac7083`.
 
-Two confirmed defects, [reported upstream](https://github.com/openclaw/openclaw/issues/119393) with
-a [fix](https://github.com/openclaw/openclaw/pull/119394):
+Two confirmed defects, [reported upstream](https://github.com/openclaw/openclaw/issues/119393). The
+[fix](https://github.com/openclaw/openclaw/pull/119394) is merged (`cd009e7`, 2026-08-06) and the
+issue is closed as completed:
 
 - `openclaw-refactor-docs` opens with *"Read `../openclaw-docs/SKILL.md` first"*. That skill was
   deleted in `0dabb70` and replaced by `technical-documentation`. Three references were never
