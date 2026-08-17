@@ -14,8 +14,10 @@ The harness is here. The seed is fixed. Re-run it and you should get the same dr
 
 ## The ClawHub sample
 
-2,465 skills, uniform random from 69,265 enumerated, seed `20260804`. Percentages are the share of
-sampled skills with at least one finding of that kind — not the share of findings.
+2,465 skills, uniform random from 69,265 enumerated, seed `20260804`. **Those 69,265 are the
+most-recently-updated slice of ClawHub, not all of it** — so every rate below is a rate inside that
+frame, not a ClawHub-wide rate. Percentages are the share of sampled skills with at least one
+finding of that kind — not the share of findings.
 
 | | skills | of sample |
 |---|---:|---:|
@@ -31,8 +33,11 @@ sampled skills with at least one finding of that kind — not the share of findi
 
 The 7.8% is the one worth sitting with. A `SKILL.md` with no frontmatter has no `name` and no
 `description`, and `description` is the string the agent matches on to decide whether to fire the
-skill. Those skills are published, downloadable, and cannot be triggered the way skills are meant
-to be triggered.
+skill. What a particular runtime does when that string is absent is not something this audit
+measured — it measured the files. Inferring runtime behaviour from files is the mistake recorded in
+[The resolution rule is a choice](#the-resolution-rule-is-a-choice-and-it-makes-these-numbers-a-floor),
+and it is not one to repeat here. What the count does say is that in 192 published, downloadable
+skills, the input that skill selection is supposed to run on is not there.
 
 The 29.2% is not all breakage: ClawHub deliberately keeps the routable slug separate from the
 stored display name, so a share of those are intentional. It is still worth knowing that on nearly
@@ -90,8 +95,10 @@ because it quoted its own example output. Fix 2's guard already had a comment sa
 stop model identifiers being read as paths — the example in that comment ended in a letter, so a
 version number sailed straight through.
 
-A linter that cries wolf gets uninstalled, so the false positives were treated as the bugs. **Any
-number published before that work would have been wrong by a factor of three.**
+A linter that cries wolf gets uninstalled, so the false positives were treated as the bugs. **An
+openclaw census published before that work would have been wrong by nearly a factor of four**
+(219 → 59). The ClawHub table above was produced after the fixes, with the versions listed under
+[Reproducing](#reproducing).
 
 ## Reproducing
 
@@ -128,7 +135,9 @@ Versions used: tenken 0.2.0, skills-lint 0.7.1, carrylint 0.2.2, reflint 0.8.3.
 
 Enumeration paged `GET /api/v1/skills` ordered by most-recently-updated and stopped at 69,265 while
 the registry was still returning pages. **So this is the most-recently-updated slice of ClawHub, not
-all of it**, and recently-updated skills are if anything in better shape than abandoned ones.
+all of it**. Whether the abandoned tail is in worse shape was not measured. If it is, this slice is
+the favourable end and the rates above are the conservative side of the real figure — but that is an
+expectation, not a finding here.
 
 Each ClawHub skill was rebuilt as a standalone package — file manifest from the registry, real
 `SKILL.md` body — and scanned in its own root, because a published package is the unit of
