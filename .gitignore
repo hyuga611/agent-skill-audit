@@ -6,3 +6,8 @@ oc-repotree.json
 oc-tree/
 ch-tree/
 *.log
+
+# raw registry samples (regenerate with the harness)
+sm-*.json
+smithery-*
+ch-sample-item.json
